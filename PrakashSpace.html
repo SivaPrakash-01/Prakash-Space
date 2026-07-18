@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prakash Space — Learn Technology, AI &amp; Programming in Tamil</title>
+<meta name="description" content="Prakash Space teaches AI, programming, Linux and digital skills in Tamil — simple, practical lessons for students and beginners.">
+<meta property="og:title" content="Prakash Space">
+<meta property="og:description" content="Technology • Knowledge • Innovation — learn tech in Tamil.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0B0F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232563EB'/%3E%3Cstop offset='.5' stop-color='%237C3AED'/%3E%3Cstop offset='1' stop-color='%2306B6D4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Ctext x='50' y='67' font-size='44' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EPS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================
+  HOW TO EDIT THIS FILE (plain-language notes for future-you)
+  ============================================================
+  1. Search for "CONFIG" inside the <script> near the bottom.
+     That's the only place you need real numbers/links.
+     - Set a number (e.g. subscribers: 240) to turn on the
+       animated counter. Leave it as null to keep "Coming Soon".
+  2. Social links (GitHub, LinkedIn, Instagram, Twitter/X) are
+     marked "TODO" in the Contact and Footer sections below —
+     just replace the href="#" with your real profile URL.
+  3. Sections not built yet (Learn, Blog, Projects, AI Tools,
+     Resources, Achievements, Community) are listed in the nav
+     as "coming soon" on purpose — ask Claude to build the next
+     one whenever you're ready, and paste this file back in.
+  4. Everything is one file on purpose so it's easy to preview
+     and edit from your phone. Colors/fonts live in :root at
+     the top of the <style> block if you want to tweak the look.
+  ============================================================
+-->
+
+<style>
+  :root{
+    --bg:#0A0B0F;
+    --bg-elevated:#101218;
+    --surface:rgba(255,255,255,0.045);
+    --surface-strong:rgba(255,255,255,0.08);
+    --border:rgba(255,255,255,0.09);
+    --text:#F2F4F8;
+    --text-muted:#98A2B3;
+    --primary:#2563EB;
+    --secondary:#7C3AED;
+    --accent:#06B6D4;
+    --primary-rgb:37,99,235;
+    --secondary-rgb:124,58,237;
+    --accent-rgb:6,182,212;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary) 55%, var(--accent));
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+    --nav-h: 72px;
+    --radius: 16px;
+    --shadow-glow: 0 8px 40px rgba(var(--primary-rgb), 0.18);
+  }
+
+  [data-theme="light"]{
+    --bg:#F6F7FB;
+    --bg-elevated:#FFFFFF;
+    --surface:rgba(15,23,42,0.04);
+    --surface-strong:rgba(15,23,42,0.07);
+    --border:rgba(15,23,42,0.09);
+    --text:#12141A;
+    --text-muted:#5B6472;
+    --shadow-glow: 0 8px 40px rgba(var(--primary-rgb), 0.10);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; scroll-padding-top: 84px; }
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden; transition:background .35s ease, color .35s ease;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+  input,textarea{ font-family:inherit; }
+
+  ::-webkit-scrollbar{ width:9px; }
+  ::-webkit-scrollbar-track{ background:var(--bg); }
+  ::-webkit-scrollbar-thumb{ background:linear-gradient(var(--primary),var(--secondary)); border-radius:10px; }
+
+  .container{ max-width:1180px; margin:0 auto; padding:0 1.5rem; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible{
+    outline:2px solid var(--accent); outline-offset:3px; border-radius:6px;
+  }
+
+  /* ---------- Loader ---------- */
+  #loader{
+    position:fixed; inset:0; z-index:9999; background:var(--bg);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.2rem;
+    transition:opacity .5s ease, visibility .5s ease;
+  }
+  #loader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  .loader__mark{
+    width:56px; height:56px; border-radius:16px; background:var(--gradient);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:700; color:#fff; font-size:1.1rem;
+    animation:pulseMark 1.4s ease-in-out infinite;
+  }
+  @keyframes pulseMark{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.08); } }
+  .loader__text{ font-family:var(--font-mono); font-size:.8rem; color:var(--text-muted); letter-spacing:.05em; }
+
+  /* ---------- Progress bar ---------- */
+  #progress-bar{
+    position:fixed; top:0; left:0; height:3px; width:0%; z-index:1001;
+    background:var(--gradient); transition:width .1s linear;
+  }
+
+  /* ---------- Navbar ---------- */
+  #navbar{
+    position:sticky; top:0; z-index:900; height:var(--nav-h);
+    display:flex; align-items:center;
+    background:rgba(10,11,15,0.55);
+    backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    transition:background .35s ease, border-color .35s ease;
+  }
+  [data-theme="light"] #navbar{ background:rgba(246,247,251,0.7); }
+  #navbar .container{ display:flex; align-items:center; justify-content:space-between; width:100%; }
+  .brand{ display:flex; align-items:center; gap:.6rem; }
+  .brand__mark{
+    width:36px; height:36px; border-radius:10px; background:var(--gradient);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:700; color:#fff; font-size:.85rem;
+    box-shadow:var(--shadow-glow);
+  }
+  .brand__name{ font-family:var(--font-display); font-weight:600; font-size:1.05rem; }
+
+  .nav-desktop{ display:flex; align-items:center; gap:.4rem; }
+  .nav-link{
+    display:flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px;
+    font-size:.9rem; font-weight:500; color:var(--text-muted); position:relative;
+    transition:color .25s ease, background .25s ease;
+  }
+  .nav-link:hover, .nav-link.active{ color:var(--text); background:var(--surface); }
+  .nav-link.active::after{
+    content:''; position:absolute; bottom:-2px; left:50%; transform:translateX(-50%);
+    width:5px; height:5px; border-radius:50%; background:var(--accent);
+  }
+
+  .soon-wrap{ position:relative; }
+  .soon-chip{
+    display:flex; align-items:center; gap:.35rem; padding:.5rem .85rem; border-radius:999px;
+    font-size:.8rem; color:var(--text-muted); border:1px dashed var(--border); font-family:var(--font-mono);
+  }
+  .soon-chip:hover{ color:var(--text); border-color:var(--accent); }
+  .soon-panel{
+    position:absolute; top:calc(100% + 10px); right:0; width:230px;
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:14px;
+    padding:.6rem; box-shadow:0 20px 50px rgba(0,0,0,0.35);
+    opacity:0; visibility:hidden; transform:translateY(-6px);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+  }
+  .soon-panel.open{ opacity:1; visibility:visible; transform:translateY(0); }
+  .soon-row{
+    display:flex; align-items:center; justify-content:space-between; gap:.5rem;
+    padding:.5rem .6rem; border-radius:9px; font-size:.85rem; color:var(--text-muted);
+  }
+  .soon-row:hover{ background:var(--surface); }
+  .soon-tag{
+    font-family:var(--font-mono); font-size:.62rem; padding:.15rem .4rem; border-radius:6px;
+    background:rgba(var(--accent-rgb),0.12); color:var(--accent); letter-spacing:.04em;
+  }
+
+  .nav-right{ display:flex; align-items:center; gap:.5rem; }
+  .icon-btn{
+    width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    color:var(--text-muted); border:1px solid transparent; transition:all .2s ease;
+  }
+  .icon-btn:hover{ color:var(--text); background:var(--surface); border-color:var(--border); }
+  .hamburger{ display:none; }
+
+  /* ---------- Mobile drawer ---------- */
+  #mobile-drawer{
+    position:fixed; inset:0; z-index:1000; visibility:hidden;
+  }
+  #mobile-drawer .overlay{
+    position:absolute; inset:0; background:rgba(0,0,0,0.5); opacity:0; transition:opacity .3s ease;
+  }
+  #mobile-drawer .panel{
+    position:absolute; top:0; right:0; height:100%; width:min(80vw,340px);
+    background:var(--bg-elevated); border-left:1px solid var(--border);
+    padding:1.5rem; transform:translateX(100%); transition:transform .35s ease;
+    overflow-y:auto;
+  }
+  #mobile-drawer.open{ visibility:visible; }
+  #mobile-drawer.open .overlay{ opacity:1; }
+  #mobile-drawer.open .panel{ transform:translateX(0); }
+  .drawer__close{ margin-left:auto; display:block; width:36px; height:36px; }
+  .drawer__link{ display:flex; align-items:center; gap:.6rem; padding:.8rem 0; font-size:1rem; border-bottom:1px solid var(--border); }
+  .drawer__divider{ font-family:var(--font-mono); font-size:.7rem; color:var(--text-muted); margin:1.1rem 0 .4rem; letter-spacing:.06em; }
+  .drawer__soon{ display:flex; align-items:center; justify-content:space-between; padding:.6rem 0; color:var(--text-muted); font-size:.9rem; }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+    padding:.85rem 1.5rem; border-radius:12px; font-weight:600; font-size:.92rem;
+    transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease; white-space:nowrap;
+  }
+  .btn-primary{ background:var(--gradient); color:#fff; box-shadow:var(--shadow-glow); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 40px rgba(var(--secondary-rgb),0.3); }
+  .btn-outline{ border:1px solid var(--border); color:var(--text); background:var(--surface); }
+  .btn-outline:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+  .btn-ghost{ color:var(--text-muted); }
+  .btn-ghost:hover{ color:var(--text); }
+
+  /* ---------- Hero ---------- */
+  .hero{ position:relative; padding: 3.5rem 0 3rem; overflow:hidden; }
+  #particles{ position:absolute; inset:0; width:100%; height:100%; z-index:0; opacity:.55; }
+  .hero__inner{ position:relative; z-index:1; display:grid; grid-template-columns:1.1fr .9fr; gap:3rem; align-items:center; }
+  .badge{
+    display:inline-flex; align-items:center; gap:.5rem; padding:.45rem .9rem; border-radius:999px;
+    background:var(--surface); border:1px solid var(--border); font-size:.82rem; color:var(--text-muted);
+    margin-bottom:1.4rem; font-family:var(--font-mono);
+  }
+  .hero__title{
+    font-family:var(--font-display); font-weight:700; line-height:1.05;
+    font-size:clamp(2.4rem, 5.5vw, 3.6rem); margin-bottom:.6rem;
+    background:var(--gradient); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero__slogan{ font-family:var(--font-mono); color:var(--accent); font-size:.95rem; letter-spacing:.03em; margin-bottom:1.1rem; }
+  .hero__intro{ color:var(--text-muted); font-size:1.05rem; max-width:46ch; margin-bottom:1.8rem; }
+  .hero__cta{ display:flex; flex-wrap:wrap; gap:.8rem; }
+
+  .terminal{
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:0 20px 60px rgba(0,0,0,0.35); overflow:hidden;
+  }
+  .terminal__bar{ display:flex; align-items:center; gap:.5rem; padding:.8rem 1rem; border-bottom:1px solid var(--border); background:var(--surface); }
+  .dot{ width:10px; height:10px; border-radius:50%; }
+  .dot.red{ background:#ff5f57; } .dot.yellow{ background:#febc2e; } .dot.green{ background:#28c840; }
+  .terminal__label{ margin-left:.6rem; font-family:var(--font-mono); font-size:.75rem; color:var(--text-muted); }
+  .terminal__body{
+    font-family:var(--font-mono); font-size:.85rem; padding:1.4rem; min-height:220px;
+    color:#B9E6FF; white-space:pre-wrap; word-break:break-word;
+  }
+  .cursor{ display:inline-block; width:8px; height:1em; background:var(--accent); vertical-align:text-bottom; animation:blink 1s step-start infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .stats{ position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:3rem; }
+  .stat-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:1.4rem 1rem; text-align:center; transition:transform .25s ease, border-color .25s ease;
+  }
+  .stat-card:hover{ transform:translateY(-4px); border-color:rgba(var(--accent-rgb),0.4); }
+  .stat-number{ font-family:var(--font-display); font-size:1.7rem; font-weight:700; color:var(--text); }
+  .stat-soon{
+    display:inline-block; font-family:var(--font-mono); font-size:.7rem; color:var(--accent);
+    background:rgba(var(--accent-rgb),0.12); padding:.25rem .55rem; border-radius:8px;
+  }
+  .stat-label{ margin-top:.4rem; font-size:.8rem; color:var(--text-muted); }
+
+  /* ---------- Sections ---------- */
+  .section{ padding:5.5rem 0; border-top:1px solid var(--border); }
+  .section__eyebrow{
+    font-family:var(--font-mono); color:var(--accent); font-size:.82rem; margin-bottom:.7rem; letter-spacing:.02em;
+  }
+  .section__title{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.7rem,3.5vw,2.4rem); margin-bottom:.8rem; }
+  .section__subtitle{ color:var(--text-muted); max-width:58ch; margin-bottom:2.5rem; }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* About */
+  .about__intro{ color:var(--text-muted); max-width:70ch; margin-bottom:2.5rem; font-size:1.02rem; }
+  .about__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.3rem; margin-bottom:2.5rem; }
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.6rem;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .card:hover{ transform:translateY(-4px); border-color:rgba(var(--primary-rgb),0.35); }
+  .card__icon{ font-size:1.6rem; margin-bottom:.8rem; }
+  .card__title{ font-family:var(--font-display); font-weight:600; margin-bottom:.5rem; }
+  .card__text{ color:var(--text-muted); font-size:.92rem; }
+
+  .about__goals{ margin-bottom:2.5rem; }
+  .goals__title{ font-family:var(--font-display); font-weight:600; margin-bottom:1rem; font-size:1.1rem; }
+  .goals__list li{ display:flex; gap:.7rem; align-items:flex-start; color:var(--text-muted); margin-bottom:.7rem; font-size:.95rem; }
+  .goals__list li::before{ content:'→'; color:var(--accent); font-family:var(--font-mono); flex-shrink:0; }
+
+  .timeline-soon{
+    display:flex; align-items:flex-start; gap:1rem; background:var(--surface); border:1px dashed var(--border);
+    border-radius:var(--radius); padding:1.4rem;
+  }
+  .timeline-soon__emoji{ font-size:1.6rem; }
+  .timeline-soon__title{ font-family:var(--font-display); font-weight:600; margin-bottom:.3rem; }
+  .timeline-soon__text{ color:var(--text-muted); font-size:.9rem; }
+
+  /* FAQ */
+  .faq__list{ display:flex; flex-direction:column; gap:.8rem; max-width:70ch; }
+  .faq__item{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:.3rem 1.2rem; }
+  .faq__item summary{
+    list-style:none; cursor:pointer; padding:1rem 0; font-weight:600; display:flex; justify-content:space-between; align-items:center;
+  }
+  .faq__item summary::-webkit-details-marker{ display:none; }
+  .faq__item summary::after{ content:'+'; font-family:var(--font-mono); color:var(--accent); font-size:1.2rem; transition:transform .25s ease; }
+  .faq__item[open] summary::after{ transform:rotate(45deg); }
+  .faq__item p{ color:var(--text-muted); padding-bottom:1.1rem; font-size:.92rem; }
+
+  /* YouTube */
+  .yt-banner{
+    display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:1.6rem 1.8rem; margin-bottom:2rem;
+  }
+  .yt-banner__left{ display:flex; align-items:center; gap:1rem; }
+  .yt-icon{ width:48px; height:48px; border-radius:12px; background:#FF0000; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; }
+  .yt-banner__title{ font-family:var(--font-display); font-weight:600; }
+  .yt-banner__sub{ color:var(--text-muted); font-size:.85rem; }
+
+  .yt-search{
+    width:100%; padding:.9rem 1.1rem; border-radius:12px; margin-bottom:2rem;
+    background:var(--surface); border:1px solid var(--border); color:var(--text-muted); font-size:.9rem;
+  }
+  .yt-search:disabled{ cursor:not-allowed; }
+
+  .yt-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; }
+  .yt-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:1.5rem; text-align:center;
+  }
+  .yt-card__icon{ font-size:1.6rem; margin-bottom:.7rem; }
+  .yt-card__title{ font-family:var(--font-display); font-weight:600; margin-bottom:.4rem; font-size:.98rem; }
+  .yt-card__soon{
+    display:inline-block; font-family:var(--font-mono); font-size:.68rem; color:var(--accent);
+    background:rgba(var(--accent-rgb),0.12); padding:.2rem .5rem; border-radius:7px; margin-bottom:.8rem;
+  }
+  .yt-card__link{ font-size:.82rem; color:var(--accent); font-weight:600; }
+
+  .yt-shorts-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+  .short-card{ display:block; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); background:var(--surface); transition:transform .25s ease, border-color .25s ease; }
+  .short-card:hover{ transform:translateY(-4px); border-color:rgba(var(--accent-rgb),0.4); }
+  .short-card__thumb{ position:relative; width:100%; aspect-ratio:9/16; background-size:cover; background-position:center; background-color:#000; }
+  .short-card__play{
+    position:absolute; inset:0; margin:auto; width:42px; height:42px; border-radius:50%;
+    background:rgba(0,0,0,0.55); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1rem;
+  }
+  .short-card__label{ padding:.7rem; font-size:.85rem; font-weight:600; text-align:center; }
+
+  /* Contact */
+  .contact__grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:2.5rem; }
+  .form-group{ margin-bottom:1.1rem; }
+  .form-group label{ display:block; font-size:.85rem; color:var(--text-muted); margin-bottom:.4rem; }
+  .form-group input, .form-group textarea{
+    width:100%; padding:.85rem 1rem; border-radius:11px; background:var(--surface);
+    border:1px solid var(--border); color:var(--text); font-size:.92rem; transition:border-color .2s ease;
+  }
+  .form-group input:focus, .form-group textarea:focus{ border-color:var(--accent); outline:none; }
+  .form-group textarea{ resize:vertical; min-height:120px; }
+
+  .contact__info{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.6rem; height:fit-content; }
+  .contact__info h3{ font-family:var(--font-display); margin-bottom:.6rem; font-size:1.05rem; }
+  .contact__info p{ color:var(--text-muted); font-size:.9rem; margin-bottom:1.3rem; }
+  .contact__email{ color:var(--accent); font-weight:600; font-size:.95rem; word-break:break-word; }
+  .social-row{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.3rem; }
+  .social-btn{
+    width:42px; height:42px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+    background:var(--surface-strong); border:1px solid var(--border); font-size:1.1rem;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .social-btn:hover{ transform:translateY(-3px); border-color:var(--accent); }
+
+  /* Footer */
+  footer{ border-top:1px solid var(--border); padding:3.5rem 0 0; background:var(--bg-elevated); }
+  .footer__grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:2.5rem; padding-bottom:2.5rem; }
+  .footer__brand p{ color:var(--text-muted); font-size:.88rem; margin:.8rem 0 1rem; max-width:32ch; }
+  .footer__col h4{ font-family:var(--font-display); font-size:.95rem; margin-bottom:1rem; }
+  .footer__col a, .footer__col span{ display:block; color:var(--text-muted); font-size:.88rem; margin-bottom:.65rem; }
+  .footer__col a:hover{ color:var(--accent); }
+  .footer__soon-note{ font-family:var(--font-mono); font-size:.72rem; color:var(--text-muted); margin-top:.6rem; }
+  .newsletter-row{ display:flex; gap:.5rem; margin-top:.5rem; }
+  .newsletter-row input{
+    flex:1; padding:.7rem .9rem; border-radius:10px; background:var(--surface); border:1px solid var(--border); color:var(--text); font-size:.85rem;
+  }
+  .footer__legal{
+    border-top:1px solid var(--border); padding:1.3rem 0; display:flex; flex-wrap:wrap;
+    align-items:center; justify-content:space-between; gap:.8rem; font-size:.82rem; color:var(--text-muted);
+  }
+  .footer__legal a{ margin-left:1rem; }
+  .footer__legal a:hover{ color:var(--accent); }
+
+  /* Back to top + toast */
+  #back-to-top{
+    position:fixed; bottom:1.6rem; right:1.6rem; width:46px; height:46px; border-radius:50%;
+    background:var(--gradient); color:#fff; display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow-glow); opacity:0; visibility:hidden; transform:translateY(10px);
+    transition:opacity .3s ease, transform .3s ease, visibility .3s ease; z-index:500; font-size:1.1rem;
+  }
+  #back-to-top.show{ opacity:1; visibility:visible; transform:translateY(0); }
+
+  #toast{
+    position:fixed; bottom:2rem; left:50%; transform:translate(-50%,20px);
+    background:var(--bg-elevated); border:1px solid var(--border); color:var(--text);
+    padding:.85rem 1.4rem; border-radius:999px; font-size:.85rem; box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    opacity:0; visibility:hidden; transition:opacity .3s ease, transform .3s ease, visibility .3s ease; z-index:1002;
+  }
+  #toast.show{ opacity:1; visibility:visible; transform:translate(-50%,0); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1024px){
+    .about__grid, .yt-grid{ grid-template-columns:repeat(2,1fr); }
+    .footer__grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:860px){
+    .hero__inner{ grid-template-columns:1fr; }
+    .terminal{ order:-1; }
+    .contact__grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width:700px){
+    .nav-desktop, .nav-right .icon-btn.theme-desktop{ display:none; }
+    .hamburger{ display:flex; }
+    .stats{ grid-template-columns:repeat(2,1fr); }
+    .about__grid, .yt-grid{ grid-template-columns:1fr; }
+    .yt-shorts-grid{ grid-template-columns:repeat(2,1fr); }
+    .footer__grid{ grid-template-columns:1fr; gap:2rem; }
+    .section{ padding:3.5rem 0; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader__mark">PS</div>
+  <div class="loader__text">booting prakash-space…</div>
+</div>
+
+<div id="progress-bar"></div>
+
+<header id="navbar">
+  <div class="container">
+    <a href="#home" class="brand">
+      <span class="brand__mark">PS</span>
+      <span class="brand__name">Prakash Space</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="#home" class="nav-link" data-nav="home">🏠 Home</a>
+      <a href="#about" class="nav-link" data-nav="about">👤 About</a>
+      <a href="#youtube" class="nav-link" data-nav="youtube">🎥 YouTube</a>
+      <a href="#contact" class="nav-link" data-nav="contact">📩 Contact</a>
+      <div class="soon-wrap">
+        <button class="soon-chip" id="soon-toggle" aria-expanded="false">+7 more · soon ▾</button>
+        <div class="soon-panel" id="soon-panel">
+          <div class="soon-row"><span>📚 Learn</span><span class="soon-tag">SOON</span></div>
+          <div class="soon-row"><span>📝 Blog</span><span class="soon-tag">SOON</span></div>
+          <div class="soon-row"><span>🚀 Projects</span><span class="soon-tag">SOON</span></div>
+          <div class="soon-row"><span>🧠 AI Tools</span><span class="soon-tag">SOON</span></div>
+          <div class="soon-row"><span>💻 Resources</span><span class="soon-tag">SOON</span></div>
+          <div class="soon-row"><span>🏆 Achievements</span><span class="soon-tag">SOON</span></div>
+          <div class="soon-row"><span>🤝 Community</span><span class="soon-tag">SOON</span></div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-right">
+      <button class="icon-btn theme-desktop" id="theme-toggle" aria-label="Toggle light and dark theme">🌙</button>
+      <button class="icon-btn hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-drawer">
+  <div class="overlay" id="drawer-overlay"></div>
+  <div class="panel">
+    <button class="icon-btn drawer__close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="#home" class="drawer__link">🏠 Home</a>
+    <a href="#about" class="drawer__link">👤 About</a>
+    <a href="#youtube" class="drawer__link">🎥 YouTube</a>
+    <a href="#contact" class="drawer__link">📩 Contact</a>
+    <div class="drawer__divider">// coming soon</div>
+    <div class="drawer__soon"><span>📚 Learn</span><span class="soon-tag">SOON</span></div>
+    <div class="drawer__soon"><span>📝 Blog</span><span class="soon-tag">SOON</span></div>
+    <div class="drawer__soon"><span>🚀 Projects</span><span class="soon-tag">SOON</span></div>
+    <div class="drawer__soon"><span>🧠 AI Tools</span><span class="soon-tag">SOON</span></div>
+    <div class="drawer__soon"><span>💻 Resources</span><span class="soon-tag">SOON</span></div>
+    <div class="drawer__soon"><span>🏆 Achievements</span><span class="soon-tag">SOON</span></div>
+    <div class="drawer__soon"><span>🤝 Community</span><span class="soon-tag">SOON</span></div>
+    <button class="icon-btn" id="theme-toggle-mobile" style="margin-top:1.2rem;border:1px solid var(--border);width:auto;padding:.6rem 1rem;border-radius:10px;">🌙 Toggle theme</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- ===================== HOME ===================== -->
+  <section id="home" class="hero">
+    <canvas id="particles"></canvas>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="badge"><span lang="ta">வணக்கம் · தமிழில் கற்போம்</span> 👋</span>
+        <h1 class="hero__title">Prakash Space</h1>
+        <p class="hero__slogan">Technology • Knowledge • Innovation</p>
+        <p class="hero__intro">I'm Prakash — a student building Prakash Space to teach AI, programming, Linux and digital skills in Tamil. No jargon, no gatekeeping — just clear, practical lessons for anyone starting from zero.</p>
+        <div class="hero__cta">
+          <a href="#about" class="btn btn-primary">Explore</a>
+          <a href="https://youtube.com/@prakashspace" target="_blank" rel="noopener" class="btn btn-outline">▶ Subscribe on YouTube</a>
+          <a href="#youtube" class="btn btn-ghost">Start Learning →</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="terminal">
+          <div class="terminal__bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="terminal__label">prakash@space:~$</span>
+          </div>
+          <div class="terminal__body" id="terminal-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container stats">
+      <div class="stat-card" data-stat="studentsReached">
+        <div class="stat-number" style="display:none;">0</div>
+        <div class="stat-soon" style="display:none;">Coming Soon</div>
+        <div class="stat-label">Students Reached</div>
+      </div>
+      <div class="stat-card" data-stat="videosPublished">
+        <div class="stat-number" style="display:none;">0</div>
+        <div class="stat-soon" style="display:none;">Coming Soon</div>
+        <div class="stat-label">Videos Published</div>
+      </div>
+      <div class="stat-card" data-stat="subscribers">
+        <div class="stat-number" style="display:none;">0</div>
+        <div class="stat-soon" style="display:none;">Coming Soon</div>
+        <div class="stat-label">Subscribers</div>
+      </div>
+      <div class="stat-card" data-stat="learningResources">
+        <div class="stat-number" style="display:none;">0</div>
+        <div class="stat-soon" style="display:none;">Coming Soon</div>
+        <div class="stat-label">Learning Resources</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <p class="section__eyebrow">$ whoami</p>
+      <h2 class="section__title reveal">About Prakash</h2>
+      <p class="about__intro reveal">A passionate student and technology creator dedicated to teaching technology in Tamil. Prakash Space exists to break complex ideas — AI, code, Linux, productivity — into lessons anyone can follow, no matter where they're starting from.</p>
+
+      <div class="about__grid">
+        <div class="card reveal">
+          <div class="card__icon">🎯</div>
+          <div class="card__title">Mission</div>
+          <div class="card__text">Make technology education accessible in Tamil — free, practical, and built for beginners.</div>
+        </div>
+        <div class="card reveal">
+          <div class="card__icon">🔭</div>
+          <div class="card__title">Vision</div>
+          <div class="card__text">A generation of Tamil-speaking creators, developers, and innovators who never had to choose between their language and their ambitions.</div>
+        </div>
+        <div class="card reveal">
+          <div class="card__icon">💎</div>
+          <div class="card__title">Values</div>
+          <div class="card__text">Clarity over complexity. Community over competition. Consistency over hype.</div>
+        </div>
+      </div>
+
+      <div class="about__goals reveal">
+        <div class="goals__title">Future Goals</div>
+        <ul class="goals__list">
+          <li>Launch structured, beginner-friendly Tamil courses in AI &amp; programming</li>
+          <li>Build an active learner community around Prakash Space</li>
+          <li>Publish open-source projects and free learning resources</li>
+          <li>Grow Prakash Space into a full learning platform, not just a channel</li>
+        </ul>
+      </div>
+
+      <div class="timeline-soon reveal">
+        <div class="timeline-soon__emoji">🚧</div>
+        <div>
+          <div class="timeline-soon__title">Journey Timeline — Coming Soon</div>
+          <div class="timeline-soon__text">The full story — first video, first 100 subscribers, and what's next — is being written. Check back soon.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section id="faq" class="section">
+    <div class="container">
+      <p class="section__eyebrow">$ man faq</p>
+      <h2 class="section__title reveal">Frequently Asked Questions</h2>
+      <div class="faq__list">
+        <details class="faq__item reveal">
+          <summary>What does Prakash Space teach?</summary>
+          <p>AI, programming (Python, C++), Linux, productivity, and career guidance — all explained in Tamil.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>Who is this for?</summary>
+          <p>Complete beginners, students, and anyone who finds it easier to learn technology in their own language.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>Is the content free?</summary>
+          <p>Yes — videos are free to watch. A dedicated resources hub with notes, cheat sheets, and roadmaps is on the way.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>What language are lessons in?</summary>
+          <p>Tamil, with technical terms explained clearly so nothing gets lost in translation.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== YOUTUBE ===================== -->
+  <section id="youtube" class="section">
+    <div class="container">
+      <p class="section__eyebrow">$ open youtube.com/@prakashspace</p>
+      <h2 class="section__title reveal">On YouTube</h2>
+      <p class="section__subtitle reveal">New lessons every week — subscribe so you don't miss one.</p>
+
+      <div class="yt-banner reveal">
+        <div class="yt-banner__left">
+          <div class="yt-icon">▶</div>
+          <div>
+            <div class="yt-banner__title">Prakash Space</div>
+            <div class="yt-banner__sub" data-stat="subscribers">
+              <span class="stat-number" style="display:none;">0</span>
+              <span class="stat-soon" style="display:none;">@prakashspace</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://youtube.com/@prakashspace" target="_blank" rel="noopener" class="btn btn-primary">Subscribe</a>
+      </div>
+
+      <input type="text" class="yt-search" placeholder="🔍 Search videos — coming soon" disabled aria-label="Video search, coming soon">
+
+      <div class="yt-grid">
+        <div class="yt-card reveal">
+          <div class="yt-card__icon">⭐</div>
+          <div class="yt-card__title">Featured Videos</div>
+          <div class="yt-card__soon">Coming Soon</div>
+          <a href="https://youtube.com/@prakashspace" target="_blank" rel="noopener" class="yt-card__link">Watch on YouTube →</a>
+        </div>
+        <div class="yt-card reveal">
+          <div class="yt-card__icon">🆕</div>
+          <div class="yt-card__title">Latest Uploads</div>
+          <div class="yt-card__soon">Coming Soon</div>
+          <a href="https://youtube.com/@prakashspace" target="_blank" rel="noopener" class="yt-card__link">Watch on YouTube →</a>
+        </div>
+        <div class="yt-card reveal">
+          <div class="yt-card__icon">📂</div>
+          <div class="yt-card__title">Playlists</div>
+          <div class="yt-card__soon">Coming Soon</div>
+          <a href="https://youtube.com/@prakashspace" target="_blank" rel="noopener" class="yt-card__link">Watch on YouTube →</a>
+        </div>
+        <div class="yt-card reveal">
+          <div class="yt-card__icon">⚡</div>
+          <div class="yt-card__title">Shorts</div>
+          <div class="yt-card__soon" style="background:rgba(6,182,212,0.18);">4 Live</div>
+          <a href="#shorts-showcase" class="yt-card__link">Watch below ↓</a>
+        </div>
+      </div>
+
+      <div id="shorts-showcase" style="margin-top:2.2rem;">
+        <div class="goals__title" style="margin-bottom:1rem;">Latest Shorts</div>
+        <div class="yt-shorts-grid">
+          <a href="https://youtube.com/shorts/SwFTQ13x4tw?si=fOeq-0eiQrjP1upW" target="_blank" rel="noopener" class="short-card reveal">
+            <div class="short-card__thumb" style="background-image:url('https://i.ytimg.com/vi/SwFTQ13x4tw/hqdefault.jpg');"><span class="short-card__play">▶</span></div>
+            <div class="short-card__label">Short 01</div>
+          </a>
+          <a href="https://youtube.com/shorts/k3cS5D5_eFQ?si=BjEGkcSv_-fI9P6l" target="_blank" rel="noopener" class="short-card reveal">
+            <div class="short-card__thumb" style="background-image:url('https://i.ytimg.com/vi/k3cS5D5_eFQ/hqdefault.jpg');"><span class="short-card__play">▶</span></div>
+            <div class="short-card__label">Short 02</div>
+          </a>
+          <a href="https://youtube.com/shorts/Q4iGycGH_7g?si=0L5gIocBnP4EIqpQ" target="_blank" rel="noopener" class="short-card reveal">
+            <div class="short-card__thumb" style="background-image:url('https://i.ytimg.com/vi/Q4iGycGH_7g/hqdefault.jpg');"><span class="short-card__play">▶</span></div>
+            <div class="short-card__label">Short 03</div>
+          </a>
+          <a href="https://youtube.com/shorts/Ihj0t9vKclg?si=wvNFrmlS07-px0UN" target="_blank" rel="noopener" class="short-card reveal">
+            <div class="short-card__thumb" style="background-image:url('https://i.ytimg.com/vi/Ihj0t9vKclg/hqdefault.jpg');"><span class="short-card__play">▶</span></div>
+            <div class="short-card__label">Short 04</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <p class="section__eyebrow">$ ./contact --send</p>
+      <h2 class="section__title reveal">Let's Talk</h2>
+      <p class="section__subtitle reveal">Questions, collabs, or feedback — send a message and I'll get back to you.</p>
+
+      <div class="contact__grid">
+        <form id="contact-form" class="reveal">
+          <div class="form-group">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="cf-subject">Subject</label>
+            <input type="text" id="cf-subject" name="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+
+        <div class="contact__info reveal">
+          <h3>Reach out directly</h3>
+          <p>Prefer email? Write to me here:</p>
+          <a href="mailto:alphazone.official371@gmail.com" class="contact__email">alphazone.official371@gmail.com</a>
+
+          <div class="social-row">
+            <a href="https://youtube.com/@prakashspace" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube" title="YouTube">▶</a>
+            <a href="#" class="social-btn" aria-label="GitHub" title="GitHub — TODO: add your link">🐙</a>
+            <a href="#" class="social-btn" aria-label="LinkedIn" title="LinkedIn — TODO: add your link">💼</a>
+            <a href="#" class="social-btn" aria-label="Instagram" title="Instagram — TODO: add your link">📷</a>
+            <a href="#" class="social-btn" aria-label="Twitter / X" title="Twitter/X — TODO: add your link">✕</a>
+            <a href="mailto:alphazone.official371@gmail.com" class="social-btn" aria-label="Email" title="Email">✉️</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <div class="brand">
+        <span class="brand__mark">PS</span>
+        <span class="brand__name">Prakash Space</span>
+      </div>
+      <p>Technology • Knowledge • Innovation — teaching tech in Tamil, one lesson at a time.</p>
+      <div class="social-row">
+        <a href="https://youtube.com/@prakashspace" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">▶</a>
+        <a href="#" class="social-btn" aria-label="GitHub">🐙</a>
+        <a href="#" class="social-btn" aria-label="LinkedIn">💼</a>
+        <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+        <a href="mailto:alphazone.official371@gmail.com" class="social-btn" aria-label="Email">✉️</a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#youtube">YouTube</a>
+      <a href="#contact">Contact</a>
+      <div class="footer__soon-note">// Learn, Blog, Projects &amp; more — coming soon</div>
+    </div>
+
+    <div class="footer__col">
+      <h4>Stay Updated</h4>
+      <span>Get notified about new lessons.</span>
+      <form class="newsletter-row" id="newsletter-form">
+        <input type="email" placeholder="you@email.com" required aria-label="Email for newsletter">
+        <button type="submit" class="btn btn-primary" style="padding:.7rem 1rem;">Join</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container footer__legal">
+    <span>© 2026 all rights reserved, Made by Siva Prakash</span>
+    <span>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+    </span>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">↑</button>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   CONFIG — the only section you should need to edit by hand.
+   Set a number to show a live counter, or leave null for
+   "Coming Soon". All values are safe placeholders right now.
+   ============================================================ */
+const CONFIG = {
+  stats: {
+    studentsReached: null,
+    videosPublished: 4,
+    subscribers: null,
+    learningResources: null
+  }
+};
+
+/* ---------- Loader ---------- */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hide'), 500);
+});
+
+/* ---------- Scroll progress bar ---------- */
+const progressBar = document.getElementById('progress-bar');
+function updateProgress(){
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progressBar.style.width = scrolled + '%';
+}
+document.addEventListener('scroll', () => requestAnimationFrame(updateProgress), { passive:true });
+
+/* ---------- Navbar: scrollspy ---------- */
+const sections = ['home','about','youtube','contact'];
+const navLinks = document.querySelectorAll('.nav-link');
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === entry.target.id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(id => { const el = document.getElementById(id); if(el) spyObserver.observe(el); });
+
+/* ---------- Soon dropdown ---------- */
+const soonToggle = document.getElementById('soon-toggle');
+const soonPanel = document.getElementById('soon-panel');
+soonToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const open = soonPanel.classList.toggle('open');
+  soonToggle.setAttribute('aria-expanded', open);
+});
+document.addEventListener('click', (e) => {
+  if(!soonPanel.contains(e.target) && e.target !== soonToggle){
+    soonPanel.classList.remove('open');
+    soonToggle.setAttribute('aria-expanded','false');
+  }
+});
+
+/* ---------- Mobile drawer ---------- */
+const drawer = document.getElementById('mobile-drawer');
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const drawerClose = document.getElementById('drawer-close');
+const drawerOverlay = document.getElementById('drawer-overlay');
+function openDrawer(){ drawer.classList.add('open'); hamburgerBtn.setAttribute('aria-expanded','true'); }
+function closeDrawer(){ drawer.classList.remove('open'); hamburgerBtn.setAttribute('aria-expanded','false'); }
+hamburgerBtn.addEventListener('click', openDrawer);
+drawerClose.addEventListener('click', closeDrawer);
+drawerOverlay.addEventListener('click', closeDrawer);
+drawer.querySelectorAll('.drawer__link').forEach(l => l.addEventListener('click', closeDrawer));
+
+/* ---------- Theme toggle (in-memory only, no storage) ---------- */
+function toggleTheme(){
+  const html = document.documentElement;
+  const isLight = html.getAttribute('data-theme') === 'light';
+  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+  const icon = isLight ? '🌙' : '☀️';
+  document.getElementById('theme-toggle').textContent = icon;
+  document.getElementById('theme-toggle-mobile').textContent = (isLight ? '🌙' : '☀️') + ' Toggle theme';
+}
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+document.getElementById('theme-toggle-mobile').addEventListener('click', toggleTheme);
+
+/* ---------- Terminal typing effect ---------- */
+const terminalBlocks = [
+  "$ whoami\n> Prakash — creator, Prakash Space\n",
+  "$ ./mission --lang=Tamil\n> Teaching AI, Python, Linux & more...\n",
+  "$ subscribe --channel=\"@prakashspace\"\n> Joining the community ✓\n"
+];
+const terminalEl = document.getElementById('terminal-body');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+async function typeLoop(){
+  if(reduceMotion){
+    terminalEl.textContent = terminalBlocks.join('\n');
+    return;
+  }
+  let blockIndex = 0;
+  while(true){
+    const block = terminalBlocks[blockIndex];
+    let shown = '';
+    for(let i=0;i<block.length;i++){
+      shown += block[i];
+      terminalEl.innerHTML = shown.replace(/\n/g,'<br>') + '<span class="cursor"></span>';
+      await new Promise(r => setTimeout(r, 18));
+    }
+    await new Promise(r => setTimeout(r, 1100));
+    blockIndex = (blockIndex + 1) % terminalBlocks.length;
+    if(blockIndex === 0){
+      await new Promise(r => setTimeout(r, 600));
+      terminalEl.innerHTML = '<span class="cursor"></span>';
+      await new Promise(r => setTimeout(r, 300));
+    }
+  }
+}
+typeLoop();
+
+/* ---------- Stats: counters or "Coming Soon" ---------- */
+function animateCounter(el, target){
+  let current = 0;
+  const duration = 1200;
+  const start = performance.now();
+  function tick(now){
+    const progress = Math.min((now - start) / duration, 1);
+    current = Math.floor(progress * target);
+    el.textContent = current.toLocaleString();
+    if(progress < 1) requestAnimationFrame(tick);
+    else el.textContent = target.toLocaleString();
+  }
+  requestAnimationFrame(tick);
+}
+function initStats(){
+  document.querySelectorAll('[data-stat]').forEach(el => {
+    const key = el.dataset.stat;
+    const val = CONFIG.stats[key];
+    const numEls = el.querySelectorAll('.stat-number');
+    const soonEls = el.querySelectorAll('.stat-soon');
+    if(val === null || val === undefined){
+      soonEls.forEach(s => s.style.display = 'inline-block');
+      numEls.forEach(n => n.style.display = 'none');
+    } else {
+      soonEls.forEach(s => s.style.display = 'none');
+      numEls.forEach(n => { n.style.display = 'inline-block'; animateCounter(n, val); });
+    }
+  });
+}
+initStats();
+
+/* ---------- Reveal on scroll ---------- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ---------- Back to top ---------- */
+const backToTop = document.getElementById('back-to-top');
+document.addEventListener('scroll', () => {
+  backToTop.classList.toggle('show', window.scrollY > 700);
+}, { passive:true });
+backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior: reduceMotion ? 'auto' : 'smooth' }));
+
+/* ---------- Toast ---------- */
+const toastEl = document.getElementById('toast');
+let toastTimer;
+function showToast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2800);
+}
+
+/* ---------- Contact form (mailto — no backend yet) ---------- */
+document.getElementById('contact-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('cf-name').value;
+  const email = document.getElementById('cf-email').value;
+  const subject = document.getElementById('cf-subject').value;
+  const message = document.getElementById('cf-message').value;
+  const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+  window.location.href = `mailto:alphazone.official371@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  showToast('Opening your mail app…');
+});
+
+/* ---------- Newsletter (UI only for now) ---------- */
+document.getElementById('newsletter-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  showToast('Newsletter coming soon — thanks for the interest!');
+  this.reset();
+});
+
+/* ---------- Particle background ---------- */
+(function particles(){
+  const canvas = document.getElementById('particles');
+  if(reduceMotion){ canvas.style.display = 'none'; return; }
+  const ctx = canvas.getContext('2d');
+  const hero = document.getElementById('home');
+  let particlesArr = [];
+  const colors = ['rgba(37,99,235,0.55)','rgba(124,58,237,0.5)','rgba(6,182,212,0.5)'];
+
+  function resize(){
+    canvas.width = hero.clientWidth;
+    canvas.height = hero.clientHeight;
+    const count = window.innerWidth < 700 ? 24 : 46;
+    particlesArr = Array.from({length:count}, () => ({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      r: Math.random()*2 + 1,
+      dx: (Math.random()-0.5)*0.3,
+      dy: (Math.random()-0.5)*0.3,
+      color: colors[Math.floor(Math.random()*colors.length)]
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particlesArr.forEach(p => {
+      p.x += p.dx; p.y += p.dy;
+      if(p.x < 0) p.x = canvas.width; if(p.x > canvas.width) p.x = 0;
+      if(p.y < 0) p.y = canvas.height; if(p.y > canvas.height) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.color;
+      ctx.shadowBlur = 8; ctx.shadowColor = p.color;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  let running = true;
+  document.addEventListener('visibilitychange', () => { running = !document.hidden; });
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+</script>
+</body>
+</html>
